@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nguyen Anh Huy - CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --primary: #00b14f;
+      --text-main: #222222;
+      --text-muted: #555555;
+      --border-light: #e1e4ee;
+      --chip-bg: #eef5ff;
+      --chip-text: #1a3b5d;
+      --section-title: #0f172a;
+      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 32px auto;
+      padding: 0 16px 40px;
+    }
+
+    .cv-shell {
+      background: radial-gradient(circle at top left, #e0f9ed 0, #f5f7fb 45%);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (max-width: 768px) {
+      .cv-shell {
+        padding: 18px;
+        border-radius: 18px;
+      }
+    }
+
+    /* Header */
+    .top-layout {
+      display: grid;
+      grid-template-columns: 2.2fr 1.8fr;
+      gap: 24px;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .top-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .profile-main {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .avatar {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 18px;
+      background: #cbd5e1;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .name-role h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      letter-spacing: 0.03em;
+    }
+
+    .name-role h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .contact-label {
+      min-width: 70px;
+      font-weight: 500;
+      color: #111827;
+    }
+
+    .contact-value {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chips-row {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .chip {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      color: var(--chip-text);
+      border: 1px solid #d0defa;
+    }
+
+    /* Sections */
+    .column-single {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 14px 16px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .section-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(0, 177, 79, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--primary);
+    }
+
+    .section-title {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--section-title);
+    }
+
+    .section-line {
+      margin-top: 4px;
+      height: 1px;
+      background: linear-gradient(to right, var(--primary), transparent);
+    }
+
+    .objective p {
+      margin: 4px 0;
+      font-size: 13px;
+    }
+
+    .skill-group {
+      margin-bottom: 10px;
+    }
+
+    .skill-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .skill-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .project {
+      margin-bottom: 10px;
+    }
+
+    .project-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .project-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .project-time {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .project-link {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .project ul {
+      padding-left: 18px;
+      margin: 4px 0;
+      font-size: 13px;
+    }
+
+    .job {
+      margin-bottom: 14px;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .job-left {
+      min-width: 0;
+    }
+
+    .company {
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .job-role {
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .job-time {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .job-extra {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .job ul {
+      margin: 4px 0 0;
+      padding-left: 18px;
+      font-size: 13px;
+    }
+
+    .edu-item {
+      font-size: 13px;
+    }
+
+    .edu-school {
+      font-weight: 600;
+    }
+
+    .edu-time {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* === PRINT MODE === */
+    @media print {
+      /* Đặt khổ giấy A4 */
+      @page {
+        size: A4;
+        margin: 15mm; /* có thể chỉnh 10–20mm tùy ý */
+      }
+
+      body {
+        background: #ffffff !important;
+      }
+
+      .page {
+        margin: 0;
+        padding: 0;
+      }
+
+      .cv-shell {
+        box-shadow: none;
+        border-radius: 0;
+        background: #ffffff;
+        padding: 0;
+      }
+
+      /* Mỗi section cố gắng không bị cắt đôi */
+      .section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Mỗi job cố gắng không bị cắt đôi */
+      .job {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Ẩn màu nền đậm nếu muốn tiết kiệm mực */
+      .section {
+        border-color: #dddddd;
+      }
+
+      /* Chèn chỗ bắt buộc xuống trang khi in */
+      .page-break {
+        break-before: page;
+        page-break-before: always; /* cho trình duyệt cũ */
+      }
+
+      /* Ẩn avatar nếu không cần khi in (optional) */
+      /* .avatar { display: none !important; } */
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="cv-shell">
+      <!-- Top header -->
+      <div class="top-layout">
+        <div class="profile-main">
+          <div class="avatar">
+            <img src="https://static.topcv.vn/avatars/G9NEvawQyQfO9WWvFhaW_648f556e23011_cvtpl.jpg" alt="Nguyen Anh Huy" />
+          </div>
+          <div class="name-role">
+            <h1>Nguyen Anh Huy</h1>
+            <h2>Backend Developer || Data Engineer</h2>
+            <p class="tagline">
+              8+ years building scalable backend systems &amp; data platforms.
+            </p>
+          </div>
+        </div>
+        <div class="contact">
+          <div class="contact-row">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">+84985180822</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">huynguyen0419@gmail.com</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Ho Chi Minh, Vietnam</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">
+              <a href="https://github.com/dehuy69" target="_blank" rel="noreferrer">
+                github.com/dehuy69
+              </a>
+            </span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">
+              <a
+                href="https://www.linkedin.com/in/huy-nguyen-423452136/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                huy-nguyen-423452136
+              </a>
+            </span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">WhatsApp</span>
+            <span class="contact-value">Phone/Whatsapp/Telegram: +84985180822</span>
+          </div>
+
+          <div class="chips-row">
+            <span class="chip">Backend</span>
+            <span class="chip">Data Engineer</span>
+            <span class="chip">Tech Lead</span>
+            <span class="chip">Python</span>
+            <span class="chip">Golang</span>
+            <span class="chip">Spark</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SINGLE COLUMN BODY -->
+      <div class="column-single">
+        <!-- Objective -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-icon">🎯</div>
+            <div>
+              <div class="section-title">Objective</div>
+              <div class="section-line"></div>
+            </div>
+          </div>
+          <div class="objective">
+            <p>👨‍💻 <strong>Experienced Developer</strong>: 8+ years as a Backend Developer &amp; Data Engineer, skilled in Python, Golang, Spark, and modern backend technologies.</p>
+            <p>🚀 <strong>Problem Solver</strong>: Passionate about building scalable systems, optimizing data pipelines, and creating efficient backend solutions.</p>
+            <p>🤝 <strong>Collaborator</strong>: Effective in cross-functional teams, delivering robust and high-performance software aligned with business needs.</p>
+          </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-icon">🧰</div>
+            <div>
+              <div class="section-title">Skills</div>
+              <div class="section-line"></div>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-title">Programming Languages</div>
+            <div class="skill-text">Python, Golang, C/C++, Rust</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-title">Web Frameworks</div>
+            <div class="skill-text">Django, FastAPI, Sanic, Flask, Echo, Gin</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-title">Databases</div>
+            <div class="skill-text">
+              PostgreSQL, MongoDB, ArangoDB, Aerospike, ClickHouse, Apache Pinot,
+              Apache Druid, DuckDB, Trino, BigQuery, Databricks
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-title">Big Data and Streaming Technologies</div>
+            <div class="skill-text">
+              Apache Druid, Apache Pinot, PySpark, PyFlink, Apache Airflow, DBT,
+              Kafka, Kafka Connect, Apache Nifi, Delta Lake, Iceberg, Superset, Datahub
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-title">Machine Learning Libraries</div>
+            <div class="skill-text">TensorFlow, Scikit-learn</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-title">AI</div>
+            <div class="skill-text">LLM, Langchain, LangGraph, Unsloth, MCP</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-title">Pattern Architecture</div>
+            <div class="skill-text">Event-Driven, Microservice</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-title">DevOps</div>
+            <div class="skill-text">
+              CI/CD, Docker, Kubernetes, Grafana, Prometheus, Tempo, Loki, Datadog
+            </div>
+          </div>
+        </section>
+
+        <!-- Community Projects -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-icon">🧪</div>
+            <div>
+              <div class="section-title">Community Projects</div>
+              <div class="section-line"></div>
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-title-row">
+              <div class="project-name">Culi Ai Agent</div>
+              <div class="project-time">2025 - Current</div>
+            </div>
+            <div class="project-link">
+              <a href="https://github.com/dehuy69/culi" target="_blank" rel="noreferrer">
+                github.com/dehuy69/culi
+              </a>
+            </div>
+            <p><strong>Culi – AI Accounting Assistant for Small Businesses in Vietnam</strong></p>
+            <ul>
+              <li>🤖 AI-Powered Help: Supports non-accountants with bookkeeping, tax understanding, and daily financial tasks.</li>
+              <li>🔗 Smart Integrations: Connects seamlessly with POS and accounting apps like KiotViet and MISA via API or MCP.</li>
+              <li>🧠 Reasoning &amp; Automation: Built on LangChain + LangGraph to analyze queries, generate plans, and execute workflows automatically.</li>
+              <li>💬 Natural Language Interface: Users interact through simple chat—no accounting expertise required.</li>
+              <li>🎯 Goal: Make accounting effortless for small business owners and household businesses.</li>
+            </ul>
+          </div>
+
+          <div class="project">
+            <div class="project-title-row">
+              <div class="project-name">MyDP</div>
+              <div class="project-time">2024 - Current</div>
+            </div>
+            <div class="project-link">
+              <a href="https://github.com/dehuy69/mydp" target="_blank" rel="noreferrer">
+                github.com/dehuy69/mydp
+              </a>
+            </div>
+            <p>
+              MyDP - an open-source database platform supporting both OLTP and OLAP with
+              a multi-region architecture.
+            </p>
+            <ul>
+              <li>📊 <strong>Storage Engines</strong>: Uses Badger for OLTP and Parquet for OLAP.</li>
+              <li>🌐 <strong>Multi-Region Support</strong>: Provides a flexible and efficient data management solution.</li>
+              <li>🧑‍💻 <strong>User-Friendly Interface</strong>: Integrates Jupyter Notebook for easy pipeline creation and management.</li>
+              <li>🔍 <strong>Goal</strong>: Empower developers and data teams with a powerful and versatile tool for data management and analytics.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Ngắt trang khi in: sau Community Projects, trước Work Experience -->
+        <div class="page-break"></div>
+
+        <!-- Work Developer Experience (NGUYÊN VĂN, 1 CỘT) -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-icon">💼</div>
+            <div>
+              <div class="section-title">Work Developer Experience</div>
+              <div class="section-line"></div>
+            </div>
+          </div>
+
+          <!-- Hitachi -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">Hitachi Digital Service</div>
+                <div class="job-role">TECH LEAD</div>
+              </div>
+              <div class="job-time">Dec 2024 - Current</div>
+            </div>
+            <div class="job-extra">
+              Project 1: Fleet Management Platform (US Client) – Role: Tech Lead – Backend
+            </div>
+            <ul>
+              <li>Led backend development for a cloud-native fleet management system for a US-based transportation company.</li>
+              <li>Designed microservice architecture with FastAPI and deployed services on Kubernetes using Helm and GitLab CI/CD.</li>
+              <li>Built RESTful APIs for managing vehicles, drivers, maintenance schedules, and GPS tracking integrations.</li>
+              <li>Implemented observability and alerting using Datadog for metrics, logs, and distributed tracing.</li>
+              <li>Ensured high code quality through code reviews, unit/integration tests, and security audits.</li>
+              <li>Acted as the main technical point of contact with the client, facilitating agile sprints and technical discussions.</li>
+            </ul>
+            <div class="job-extra" style="margin-top: 6px;">
+              Project 2: Rail Infrastructure Data Platform (Italian Client) – Role: Tech Lead – Data Engineer
+            </div>
+            <ul>
+              <li>Led the development of a data platform for a European railway client, focusing on processing large-scale rail sensor and event data.</li>
+              <li>Built ETL pipelines using PySpark within Databricks to transform and enrich raw data for analysis and reporting.</li>
+              <li>Managed data storage and versioning using Delta Lake integrated with AWS S3, ensuring reliability and traceability.</li>
+              <li>Utilized Databricks Workflows and Notebooks to orchestrate and schedule pipeline runs, supporting modular development and reuse.</li>
+              <li>Collaborated closely with client-side analysts to deliver clean datasets for infrastructure monitoring and decision-making.</li>
+            </ul>
+          </div>
+
+          <!-- Trade Council -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">TRADE COUNCIL - International Trade - https://tradecouncil.org/</div>
+                <div class="job-role">DATA ENGINEER</div>
+              </div>
+              <div class="job-time">Dec 2023 - Jan 2024</div>
+            </div>
+            <ul>
+              <li>Orchestrated the design and implementation of an on-premise data lake infrastructure, aligned with Databrick's medallion architecture principles, to centralize and manage the organization's data assets effectively.</li>
+              <li>Employed a comprehensive tech stack including Delta Lake, PySpark, Apache Airflow, Apache Kafka, Trino, DuckDB, and DataHub to construct scalable and reliable data pipelines and processing workflows.</li>
+              <li>Collaborated closely with stakeholders across departments to gather requirements and ensure the data lake architecture met the organization's needs for data accessibility, reliability, and performance.</li>
+              <li>Implemented robust data governance and quality control mechanisms within the data lake, including schema enforcement, data lineage tracking, and automated data validation processes, to maintain data integrity and consistency.</li>
+              <li>Optimized data ingestion and transformation processes using PySpark and Airflow, enhancing efficiency and reducing processing times for data pipelines.</li>
+              <li>Integrated real-time data streaming capabilities using Apache Kafka, enabling the organization to ingest and process large volumes of streaming data for near real-time analytics and insights.</li>
+              <li>Deployed Trino (formerly PrestoSQL) as a distributed SQL query engine to provide interactive query capabilities for analysts and data scientists, facilitating ad-hoc analysis and exploration of data stored in the data lake.</li>
+              <li>Leveraged DuckDB for accelerated analytics and reporting on large datasets within the data lake, improving query performance and reducing latency for analytical workloads.</li>
+              <li>Utilized Superset to develop intuitive dashboards and visualizations for internal reporting purposes, empowering stakeholders to gain actionable insights from the data lake with ease.</li>
+              <li>Played a pivotal role in the deployment and maintenance of the data lake infrastructure, ensuring high availability, fault tolerance, and scalability to support growing data volumes and user demands.</li>
+            </ul>
+            <p class="job-extra">
+              Language Programming: Python.<br />
+              Database: MongoDB, Trino, DuckDB, ArangoDB.<br />
+              Data Tools: Airflow, DBT, Datahub, S3, Delta Lake, Superset, PySpark.<br />
+              Other Library and Technology: Sanic, FastAPI, Kafka, Jupyter Notebook, Github Action.
+            </p>
+          </div>
+
+          <!-- DATVIETVAC -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">DATVIETVAC - MARTECH</div>
+                <div class="job-role">BACKEND &amp; DATA ENGINEER</div>
+              </div>
+              <div class="job-time">Jan 2023 - Jan 2024</div>
+            </div>
+            <ul>
+              <li>Developed and maintained backend components of web applications using Golang, implementing efficient and scalable solutions.</li>
+              <li>Designed and built RESTful APIs using Golang's native packages and frameworks like Fasthttp, ensuring high-performance data exchange between the front-end and back-end systems.</li>
+              <li>Utilized Golang's concurrency features to improve the performance and responsiveness of backend services, achieving a 40% reduction in response time.</li>
+              <li>Worked with various databases, including PostgreSQL and Aerospike, writing optimized queries and leveraging Golang's database libraries to ensure data integrity and efficient data retrieval.</li>
+              <li>Implemented secure authentication and authorization mechanisms, including OAuth2 or JWT, to protect user data and enforce access control.</li>
+              <li>Conducted thorough unit testing and integration testing using Golang testing frameworks like testing and gocheck, ensuring the reliability and stability of the backend codebase.</li>
+              <li>Collaborated closely with frontend developers, UX designers, and product managers to deliver seamless user experiences and meet project requirements.</li>
+              <li>Deployed applications to K8s.</li>
+              <li>Participated in Agile development processes, attending daily stand-ups, sprint planning, and retrospective meetings to ensure timely project delivery.</li>
+              <li>Created clear and comprehensive technical documentation, including API documentation, system architecture diagrams, and code comments, aiding in the understanding and maintenance of the codebase.</li>
+              <li>Proactively identified and resolved production issues, leveraging monitoring and logging tools like Prometheus and Grafana to improve system reliability and performance.</li>
+            </ul>
+            <p class="job-extra">
+              Language Programming: Go<br />
+              Database: PostgreSQL, Aerospike, Pinot<br />
+              DevOps: K8s, Grafana, Tempo, Loki, Prometheus, Gitlab CI/CD.<br />
+              Other Library and Technology: Fasthttp, Kafka, K6, Superset, PySpark, Kafka Connect, Airflow
+            </p>
+          </div>
+
+          <!-- AIVIS - Firmware -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">AIVIS - SECURITY 4.0</div>
+                <div class="job-role">FIRMWARE ENGINEER</div>
+              </div>
+              <div class="job-time">Jan 2022 - Jan 2023</div>
+            </div>
+            <ul>
+              <li>Design and develop firmware for products and services.</li>
+              <li>Perform design and code reviews and recommend improvements.</li>
+              <li>Perform testing to validate product architecture and design.</li>
+              <li>Collaborate with other engineers on technical and design issues.</li>
+              <li>Develop firmware algorithms to handle exceptional conditions and errors.</li>
+              <li>Install and verify the firmware on embedded system.</li>
+              <li>Troubleshoot system, performance and functional issues with firmware.</li>
+              <li>Execute projects within defined scope, budget and timelines.</li>
+              <li>Optimizing firmware to achieve performance standards.</li>
+              <li>Provide product support to customers promptly and accurately.</li>
+              <li>Review codes of other engineers and provide feedbacks.</li>
+            </ul>
+            <p class="job-extra">
+              Language Programming: Python, Go, C/C++<br />
+              Database: PostgreSQL, ArangoDB<br />
+              Other Library and Technology: SOC, RabbitMQ, Tensorflow, Hisilicon SDK, WebRTC
+            </p>
+          </div>
+
+          <!-- AIVIS - Blockchain -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">AIVIS – BLOCKCHAIN</div>
+                <div class="job-role">PROJECT MANAGER - BACKEND DEVELOPER</div>
+              </div>
+              <div class="job-time">Jan 2022 - Dec 2022</div>
+            </div>
+            <p class="job-extra">
+              Language Programming: Python, Go, Rust<br />
+              Database: PostgreSQL<br />
+              Other Library and Technology: Gin, Sanic API, Solidity, RabbitMQ.<br />
+              Gained: Deliver the product to the Singapore's Customer
+            </p>
+          </div>
+
+          <!-- FPT -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">FPT INFORMATION SYSTEM – HEALTH CARE</div>
+                <div class="job-role">SYSTEM ENGINEER - BACKEND DEVELOPER</div>
+              </div>
+              <div class="job-time">Oct 2020 - Dec 2021</div>
+            </div>
+            <p class="job-extra">Backend Developer main responsibilities:</p>
+            <ul>
+              <li>Integration of user-facing elements developed by a front-end developers with server side logic.</li>
+              <li>Building reusable code and libraries for future use.</li>
+              <li>Optimization of the application for maximum speed and scalability.</li>
+              <li>Implementation of security and data protection.</li>
+              <li>Design and implementation of data storage solutions.</li>
+            </ul>
+            <p class="job-extra" style="margin-top: 6px;">System Engineer main responsibilities:</p>
+            <ul>
+              <li>Manage and monitor all installed systems and infrastructure.</li>
+              <li>Install, configure, test and maintain operating systems, application software and system management tools.</li>
+              <li>Ensure the highest levels of systems and infrastructure availability.</li>
+              <li>Monitor and test application performance for potential bottlenecks, identify possible solutions, and work with developers to implement those fixes.</li>
+              <li>Write and maintain custom scripts to increase system efficiency and lower the human intervention time on any tasks.</li>
+              <li>Participate in the design of information and operational support systems.</li>
+              <li>Corporate with vendors and other IT personnel for problem resolution.</li>
+            </ul>
+            <p class="job-extra">
+              Language Programming: Python, Go<br />
+              Database: PostgreSQL, MongoDB<br />
+              Other Library and Technology: Django, Sanic API, Gin, Kafka, Docker, Docker Swarm, Jenkins, Logstash, Elasticsearch, Kibana, Apache Airflow.<br />
+              Gained:<br />
+              - Deploy Hospital Management for all hospitals in Dong Thap Province.<br />
+              - Remote medical examination for Northern provinces such as Bac Giang, Bac Kan, Lang Son, Ha Giang, Thai Nguyen, Tuyen Quang, Yen Bai,...<br />
+              - Y tế HCM app for Department Of Health Of Ho Chi Minh City
+            </p>
+          </div>
+
+          <!-- HANET -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">HANET ELECTRONIC – CAMERA</div>
+                <div class="job-role">AI ENGINEER</div>
+              </div>
+              <div class="job-time">June 2019 - Jan 2020</div>
+            </div>
+            <ul>
+              <li>Set up and manage our AI development and production infrastructure.</li>
+              <li>Help AI product managers and business stakeholders understand the potential and limitations of AI when planning new products.</li>
+              <li>Build data ingest and data transformation infrastructure.</li>
+              <li>Identify transfer learning opportunities and new training datasets.</li>
+              <li>Build AI models from scratch and help product managers and stakeholders understand results.</li>
+              <li>Deploy AI models into product.</li>
+              <li>Create APIs and help business customers put results of your AI models into operations.</li>
+              <li>Keep current of latest AI research relevant to our business domain.</li>
+            </ul>
+            <p class="job-extra">
+              Language Programming: Python, C/C++<br />
+              Database: PostgreSQL, Apache IoTDB<br />
+              Other Library and Technology: Django, Sanic API, Keras, Tensorflow, Darknet, Huawei NNIE, Docker.<br />
+              Gained: Release production into market.
+            </p>
+          </div>
+
+          <!-- BLUESEED -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">BLUESEED – ADVERTISING</div>
+                <div class="job-role">MACHINE LEARNING ENGINEER</div>
+              </div>
+              <div class="job-time">Aug 2018 - June 2019</div>
+            </div>
+            <ul>
+              <li>Running machine learning experiments using a programming language with machine learning libraries.</li>
+              <li>Deploying machine learning solutions into production.</li>
+              <li>Optimizing solutions for performance and scalability.</li>
+              <li>Data engineering, i.e. ensuring a good data flow between database and backend systems.</li>
+              <li>Implementing custom machine learning code.</li>
+              <li>Data science, i.e. analyzing data and coming up with use cases.</li>
+            </ul>
+            <p class="job-extra">
+              Language Programming: Python<br />
+              Database: ClickHouse, PostgreSQL<br />
+              Other Library and Technology: Django, Flask, Keras, fasttext, NLTK, Spark.<br />
+              Production release:<br />
+              - DMP<br />
+              - Recommendation engine for articles based on DMP<br />
+              - Pipeline collecting articles data, classifying, use for targeting
+            </p>
+          </div>
+
+          <!-- TERRALOGIC -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">TERRALOGIC – SOFTWARE OUTSOURCING</div>
+                <div class="job-role">QC AUTOMATION ENGINEER</div>
+              </div>
+              <div class="job-time">June 2018 - Aug 2018</div>
+            </div>
+            <ul>
+              <li>Develop and configure test automation networks and execute stability and performance tests.</li>
+              <li>Apply, design and develop automated testing strategies and build automated testing frameworks.</li>
+              <li>Manual test.</li>
+            </ul>
+            <p class="job-extra">
+              Language Programming: Python<br />
+              Other Library and Technology: Appium, Robot, Jira, Testrail.
+            </p>
+          </div>
+
+          <!-- GREYSTONE -->
+          <div class="job">
+            <div class="job-header">
+              <div class="job-left">
+                <div class="company">GREYSTONE DATA SYSTEM – HDD OEM</div>
+                <div class="job-role">EMBEDDED ENGINEER</div>
+              </div>
+              <div class="job-time">June 2017 - June 2018</div>
+            </div>
+            <ul>
+              <li>Design and implement software of embedded devices and systems from requirements to production and deployment.</li>
+              <li>Design, develop, code, test and debug system software.</li>
+              <li>Review code and design.</li>
+              <li>Analyze and enhance efficiency, stability and scalability of system resources.</li>
+              <li>Integrate and validate new product designs.</li>
+              <li>Provide post production support.</li>
+              <li>Interface with hardware design and development.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-icon">🎓</div>
+            <div>
+              <div class="section-title">Education</div>
+              <div class="section-line"></div>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-time">2013 - 2017</div>
+            <div class="edu-school">Sai Gon Technology University</div>
+            <div>Bachelor of Information Technology</div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
